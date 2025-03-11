@@ -60,40 +60,32 @@ $ yarn run test:cov
 
 ## Deployment
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+This project is built using NestJS with Prisma for database management, environment variable handling using ConfigService, and scheduled tasks using @nestjs/schedule. The project uses MySQL as the database.
 
 ```bash
-$ yarn install -g mau
-$ mau deploy
+$ git clone <repository_url>
+$ DATABASE_URL="mysql://user:password@localhost:3306/database_name"
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Run Prisma migration: Generate and apply the migrations to your MySQL database:
+yarn prisma migrate dev
 
-## Resources
+## Key Features
 
-Check out a few resources that may come in handy when working with NestJS:
+Prisma Client: Prisma is used to manage database models and perform migrations.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+You can interact with the database using Prisma queries.
+Migrations are easily managed with Prisma.
+ConfigService: This service is used to handle environment variables.
+
+Environment-specific variables like database connection strings and API keys are securely managed in the .env file.
+Cron Jobs with @nestjs/schedule: This package enables scheduling cron jobs in your application.
+
+You can define and run recurring tasks within the application, useful for background jobs, maintenance tasks, etc.
+MySQL Database: The application uses MySQL for persistent data storage. Prisma is configured to interact with MySQL for seamless data management.
 
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
