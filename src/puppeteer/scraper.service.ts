@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Cron } from '@nestjs/schedule';
 import * as puppeteer from 'puppeteer';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { StockData } from 'src/types/stockData';
@@ -6,6 +7,7 @@ import { StockData } from 'src/types/stockData';
 @Injectable()
 export class ScraperService {
   constructor(private readonly prisma: PrismaService) {}
+  @Cron('0 19 * * *', { timeZone: 'Europe/Istanbul' })
   async scrapeForeks(): Promise<any> {
     console.log('Scraping foreks.com...');
 
@@ -26,7 +28,7 @@ export class ScraperService {
       await page.waitForSelector('.select', { timeout: 60000 });
       await page.select('.select', 'ALL');
 
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       await page.waitForSelector('#definitionsTable', { timeout: 60000 });
       console.log('Table loaded successfully.');
@@ -43,7 +45,11 @@ export class ScraperService {
           return Array.from(rows).map((row) => {
             const cells: StockData = {
               sembol:
-                row.querySelector('td:nth-child(1)')?.textContent?.replace(/\s+/g, ' ').trim().replace(' ', ' - ') || '',
+                row
+                  .querySelector('td:nth-child(1)')
+                  ?.textContent?.replace(/\s+/g, ' ')
+                  .trim()
+                  .replace(' ', ' - ') || '',
               son:
                 row.querySelector('td:nth-child(2)')?.textContent?.trim() || '',
               farkYuzde:
@@ -117,12 +123,38 @@ export class ScraperService {
       }
 
       await browser.close();
-      const savedData = await this.prisma.stockData.createMany({
-        data: data,
-        skipDuplicates: true, 
-      });
 
-      console.log(`Saved ${savedData.count} records to the database.`);
+      const savedData = await Promise.all(
+        data.map(async (stock) => {
+          const existingStock = await this.prisma.stockData.findFirst({
+            where: { sembol: stock.sembol },
+          });
+
+          if (existingStock) {
+            return this.prisma.stockData.update({
+              where: { id: existingStock.id },
+              data: {
+                son: stock.son,
+                farkYuzde: stock.farkYuzde,
+                fark: stock.fark,
+                alis: stock.alis,
+                satis: stock.satis,
+                gYuksek: stock.gYuksek,
+                gDusuk: stock.gDusuk,
+                aOrt: stock.aOrt,
+                adet: stock.adet,
+                hacim: stock.hacim,
+                süre: stock.süre,
+              },
+            });
+          } else {
+            return this.prisma.stockData.create({
+              data: stock,
+            });
+          }
+        }),
+      );
+
       console.log('Scraping finished. Total records:', data.length);
       return data;
     } catch (error) {
