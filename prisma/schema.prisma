@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model StockData {
+model StockDataExchanges {
   id        Int     @id @default(autoincrement())
   sembol    String
   son       String
@@ -20,5 +20,20 @@ model StockData {
   aOrt      String
   adet      String
   hacim     String
-  süre     String?
+  sure      String?
+}
+
+model StockDataFunds {
+  id              Int     @id @default(autoincrement())
+  sembol          String
+  son             String
+  farkYuzde       String
+  haftaBasiYuzde  String
+  ayBasiYuzde     String
+  yilBasiYuzde    String
+  tedAdet         String
+  yatirimciSayisi String
+  toplamDeger     String
+  portfoyDegeri   String
+  sure            String?
 }

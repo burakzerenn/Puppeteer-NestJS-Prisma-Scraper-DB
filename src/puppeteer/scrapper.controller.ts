@@ -5,9 +5,15 @@ import { ScraperService } from './scraper.service';
 export class ScraperController {
   constructor(private readonly scraperService: ScraperService) {}
 
-  @Get('foreks')
-  async getData(): Promise<any> {
-    const result = await this.scraperService.scrapeForeks();
+  @Get('foreks-exchanges')
+  async getDataExchanges(): Promise<any> {
+    const result = await this.scraperService.scrapeForeksExchanges();
+    return result;
+  }
+
+  @Get('foreks-funds')
+  async getDataFunds(): Promise<any> {
+    const result = await this.scraperService.scrapeForeksFunds();
     return result;
   }
 }

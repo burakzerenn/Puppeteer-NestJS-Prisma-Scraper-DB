@@ -1,4 +1,4 @@
-export interface StockData {
+export interface StockDataExchanges {
     sembol: string;
     son: string;
     farkYuzde: string;
@@ -10,6 +10,20 @@ export interface StockData {
     aOrt: string;
     adet: string;
     hacim: string;
-    süre?: string;
+    sure?: string;
   }
+
+  export interface StockDataFunds {
+    sembol: string;
+    son: string;
+    farkYuzde: string;
+    haftaBasiYuzde: string;
+    ayBasiYuzde: string;
+    yilBasiYuzde: string;
+    tedAdet: string;
+    yatirimciSayisi: string;
+    toplamDeger: string;
+    portfoyDegeri: string;
+    sure?: string;
+}
   
