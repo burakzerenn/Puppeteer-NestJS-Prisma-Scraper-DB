@@ -131,6 +131,10 @@ export class ScraperService {
             where: { sembol: stock.sembol },
           });
 
+          await this.prisma.stockDataExchangesHistory.create({
+            data: stock,
+          });
+
           if (existingStock) {
             return this.prisma.stockDataExchanges.update({
               where: { id: existingStock.id },
@@ -285,6 +289,10 @@ export class ScraperService {
         data.map(async (stock) => {
           const existingStock = await this.prisma.stockDataFunds.findFirst({
             where: { sembol: stock.sembol },
+          });
+
+          await this.prisma.stockDataFundsHistory.create({
+            data: stock,
           });
 
           if (existingStock) {

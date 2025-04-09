@@ -37,3 +37,34 @@ model StockDataFunds {
   portfoyDegeri   String
   sure            String?
 }
+
+model StockDataExchangesHistory {
+  id        Int     @id @default(autoincrement())
+  sembol    String
+  son       String
+  farkYuzde String
+  fark      String
+  alis      String
+  satis     String
+  gYuksek   String
+  gDusuk    String
+  aOrt      String
+  adet      String
+  hacim     String
+  sure      String?
+}
+
+model StockDataFundsHistory {
+  id              Int     @id @default(autoincrement())
+  sembol          String
+  son             String
+  farkYuzde       String
+  haftaBasiYuzde  String
+  ayBasiYuzde     String
+  yilBasiYuzde    String
+  tedAdet         String
+  yatirimciSayisi String
+  toplamDeger     String
+  portfoyDegeri   String
+  sure            String?
+}
