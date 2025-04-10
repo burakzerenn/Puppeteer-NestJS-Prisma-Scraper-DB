@@ -6,7 +6,7 @@ import { StockDataExchanges, StockDataFunds } from 'src/types/stockData';
 
 @Injectable()
 export class ScraperService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   @Cron('0 19 * * *', { timeZone: 'Europe/Istanbul' })
   async scrapeForeksExchanges(): Promise<any> {
@@ -180,12 +180,12 @@ export class ScraperService {
       });
       const page = await browser.newPage();
       await page.goto('https://www.foreks.com/borsa/tefas-fonlari/', {
-        waitUntil: 'networkidle2',
-        timeout: 60000,
+        waitUntil: 'domcontentloaded',
+        timeout: 120000,
       });
 
       //Below if needed for all tefas funds
-    
+
       /*await page.waitForSelector('.select', { timeout: 60000 });
       await page.select('.select', 'ALL');
       */
