@@ -130,10 +130,6 @@ export class ScraperService {
             where: { sembol: stock.sembol },
           });
 
-          await this.prisma.stockDataExchangesHistory.create({
-            data: stock,
-          });
-
           if (existingStock) {
             return this.prisma.stockDataExchanges.update({
               where: { id: existingStock.id },
@@ -158,6 +154,10 @@ export class ScraperService {
           }
         }),
       );
+
+      await this.prisma.stockDataExchangesHistory.createMany({
+        data: data,
+      });
 
       console.log('Scraping finished. Total records:', data.length);
       return data;
@@ -289,10 +289,6 @@ export class ScraperService {
             where: { sembol: stock.sembol },
           });
 
-          await this.prisma.stockDataFundsHistory.create({
-            data: stock,
-          });
-
           if (existingStock) {
             return this.prisma.stockDataFunds.update({
               where: { id: existingStock.id },
@@ -316,6 +312,11 @@ export class ScraperService {
           }
         }),
       );
+
+
+      await this.prisma.stockDataFundsHistory.createMany({
+        data: data,
+      });
 
       console.log('Scraping finished. Total records:', data.length);
       return data;
