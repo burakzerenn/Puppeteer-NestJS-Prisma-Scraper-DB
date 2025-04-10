@@ -16,6 +16,8 @@ export class ScraperService {
       const browser = await puppeteer.launch({
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        timeout: 0,
+        protocolTimeout: 1200000
       });
       const page = await browser.newPage();
       await page.goto('https://www.foreks.com/borsa/', {
@@ -173,6 +175,8 @@ export class ScraperService {
       const browser = await puppeteer.launch({
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        timeout: 0,
+        protocolTimeout: 1200000
       });
       const page = await browser.newPage();
       await page.goto('https://www.foreks.com/borsa/tefas-fonlari/', {
