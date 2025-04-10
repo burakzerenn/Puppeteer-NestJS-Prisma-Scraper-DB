@@ -14,7 +14,7 @@ export class ScraperService {
 
     try {
       const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         defaultViewport: {
           width: 925,
           height: 998,
@@ -174,7 +174,7 @@ export class ScraperService {
 
     try {
       const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         defaultViewport: {
           width: 980,
           height: 998,
