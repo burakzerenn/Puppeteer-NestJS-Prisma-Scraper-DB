@@ -15,10 +15,7 @@ export class ScraperService {
     try {
       const browser = await puppeteer.launch({
         headless: true,
-        defaultViewport: {
-          width: 925,
-          height: 998,
-        },
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
       await page.goto('https://www.foreks.com/borsa/', {
@@ -175,10 +172,7 @@ export class ScraperService {
     try {
       const browser = await puppeteer.launch({
         headless: true,
-        defaultViewport: {
-          width: 980,
-          height: 998,
-        },
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
       const page = await browser.newPage();
       await page.goto('https://www.foreks.com/borsa/tefas-fonlari/', {
