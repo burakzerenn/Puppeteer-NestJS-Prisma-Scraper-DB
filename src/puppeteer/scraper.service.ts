@@ -20,6 +20,8 @@ export class ScraperService {
         protocolTimeout: 1200000
       });
       const page = await browser.newPage();
+      await page.setViewport({ width: 1920, height: 1080 });
+
       await page.goto('https://www.foreks.com/borsa/', {
         waitUntil: 'networkidle2',
         timeout: 60000,
@@ -145,6 +147,7 @@ export class ScraperService {
                 adet: stock.adet,
                 hacim: stock.hacim,
                 sure: stock.sure,
+                updatedAt: new Date(),
               },
             });
           } else {
@@ -179,6 +182,8 @@ export class ScraperService {
         protocolTimeout: 1200000
       });
       const page = await browser.newPage();
+      await page.setViewport({ width: 1920, height: 1080 });
+
       await page.goto('https://www.foreks.com/borsa/tefas-fonlari/', {
         waitUntil: 'domcontentloaded',
         timeout: 120000,
@@ -303,6 +308,7 @@ export class ScraperService {
                 toplamDeger: stock.toplamDeger,
                 portfoyDegeri: stock.portfoyDegeri,
                 sure: stock.sure,
+                updatedAt: new Date(),
               },
             });
           } else {

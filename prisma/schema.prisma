@@ -8,7 +8,7 @@ datasource db {
 }
 
 model StockDataExchanges {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   sembol    String
   son       String
   farkYuzde String
@@ -21,10 +21,12 @@ model StockDataExchanges {
   adet      String
   hacim     String
   sure      String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 }
 
 model StockDataFunds {
-  id              Int     @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   sembol          String
   son             String
   farkYuzde       String
@@ -36,10 +38,12 @@ model StockDataFunds {
   toplamDeger     String
   portfoyDegeri   String
   sure            String?
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at")
 }
 
 model StockDataExchangesHistory {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   sembol    String
   son       String
   farkYuzde String
@@ -52,10 +56,11 @@ model StockDataExchangesHistory {
   adet      String
   hacim     String
   sure      String?
+  createdAt DateTime @default(now()) @map("created_at")
 }
 
 model StockDataFundsHistory {
-  id              Int     @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   sembol          String
   son             String
   farkYuzde       String
@@ -67,4 +72,5 @@ model StockDataFundsHistory {
   toplamDeger     String
   portfoyDegeri   String
   sure            String?
+  createdAt       DateTime @default(now()) @map("created_at")
 }
