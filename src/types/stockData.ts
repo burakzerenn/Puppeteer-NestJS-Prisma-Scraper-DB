@@ -5,8 +5,6 @@ export interface StockDataExchanges {
     fark: string;
     alis: string;
     satis: string;
-    gYuksek: string;
-    gDusuk: string;
     aOrt: string;
     adet: string;
     hacim: string;
@@ -21,9 +19,7 @@ export interface StockDataExchanges {
     ayBasiYuzde: string;
     yilBasiYuzde: string;
     tedAdet: string;
-    yatirimciSayisi: string;
     toplamDeger: string;
-    portfoyDegeri: string;
     sure?: string;
 }
   

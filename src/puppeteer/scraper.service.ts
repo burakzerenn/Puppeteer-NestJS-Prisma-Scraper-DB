@@ -62,20 +62,16 @@ export class ScraperService {
                 row.querySelector('td:nth-child(5)')?.textContent?.trim() || '',
               satis:
                 row.querySelector('td:nth-child(6)')?.textContent?.trim() || '',
-              gYuksek:
-                row.querySelector('td:nth-child(7)')?.textContent?.trim() || '',
-              gDusuk:
-                row.querySelector('td:nth-child(8)')?.textContent?.trim() || '',
               aOrt:
-                row.querySelector('td:nth-child(9)')?.textContent?.trim() || '',
+                row.querySelector('td:nth-child(7)')?.textContent?.trim() || '',
               adet:
-                row.querySelector('td:nth-child(10)')?.textContent?.trim() ||
+                row.querySelector('td:nth-child(8)')?.textContent?.trim() ||
                 '',
               hacim:
-                row.querySelector('td:nth-child(11)')?.textContent?.trim() ||
+                row.querySelector('td:nth-child(9)')?.textContent?.trim() ||
                 '',
               sure:
-                row.querySelector('td:nth-child(12)')?.textContent?.trim() ||
+                row.querySelector('td:nth-child(10)')?.textContent?.trim() ||
                 '',
             };
             return cells;
@@ -141,8 +137,6 @@ export class ScraperService {
                 fark: stock.fark,
                 alis: stock.alis,
                 satis: stock.satis,
-                gYuksek: stock.gYuksek,
-                gDusuk: stock.gDusuk,
                 aOrt: stock.aOrt,
                 adet: stock.adet,
                 hacim: stock.hacim,
@@ -229,15 +223,10 @@ export class ScraperService {
                 row.querySelector('td:nth-child(6)')?.textContent?.trim() || '',
               tedAdet:
                 row.querySelector('td:nth-child(7)')?.textContent?.trim() || '',
-              yatirimciSayisi:
-                row.querySelector('td:nth-child(8)')?.textContent?.trim() || '',
               toplamDeger:
-                row.querySelector('td:nth-child(9)')?.textContent?.trim() || '',
-              portfoyDegeri:
-                row.querySelector('td:nth-child(10)')?.textContent?.trim() ||
-                '',
+                row.querySelector('td:nth-child(8)')?.textContent?.trim() || '',
               sure:
-                row.querySelector('td:nth-child(11)')?.textContent?.trim() ||
+                row.querySelector('td:nth-child(9)')?.textContent?.trim() ||
                 '',
             };
             return cells;
@@ -304,9 +293,7 @@ export class ScraperService {
                 ayBasiYuzde: stock.ayBasiYuzde,
                 yilBasiYuzde: stock.yilBasiYuzde,
                 tedAdet: stock.tedAdet,
-                yatirimciSayisi: stock.yatirimciSayisi,
                 toplamDeger: stock.toplamDeger,
-                portfoyDegeri: stock.portfoyDegeri,
                 sure: stock.sure,
                 updatedAt: new Date(),
               },
@@ -318,7 +305,6 @@ export class ScraperService {
           }
         }),
       );
-
 
       await this.prisma.stockDataFundsHistory.createMany({
         data: data,

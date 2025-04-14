@@ -15,8 +15,6 @@ model StockDataExchanges {
   fark      String
   alis      String
   satis     String
-  gYuksek   String
-  gDusuk    String
   aOrt      String
   adet      String
   hacim     String
@@ -26,20 +24,18 @@ model StockDataExchanges {
 }
 
 model StockDataFunds {
-  id              Int      @id @default(autoincrement())
-  sembol          String
-  son             String
-  farkYuzde       String
-  haftaBasiYuzde  String
-  ayBasiYuzde     String
-  yilBasiYuzde    String
-  tedAdet         String
-  yatirimciSayisi String
-  toplamDeger     String
-  portfoyDegeri   String
-  sure            String?
-  createdAt       DateTime @default(now()) @map("created_at")
-  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at")
+  id             Int      @id @default(autoincrement())
+  sembol         String
+  son            String
+  farkYuzde      String
+  haftaBasiYuzde String
+  ayBasiYuzde    String
+  yilBasiYuzde   String
+  tedAdet        String
+  toplamDeger    String
+  sure           String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
 }
 
 model StockDataExchangesHistory {
@@ -50,8 +46,6 @@ model StockDataExchangesHistory {
   fark      String
   alis      String
   satis     String
-  gYuksek   String
-  gDusuk    String
   aOrt      String
   adet      String
   hacim     String
@@ -60,17 +54,15 @@ model StockDataExchangesHistory {
 }
 
 model StockDataFundsHistory {
-  id              Int      @id @default(autoincrement())
-  sembol          String
-  son             String
-  farkYuzde       String
-  haftaBasiYuzde  String
-  ayBasiYuzde     String
-  yilBasiYuzde    String
-  tedAdet         String
-  yatirimciSayisi String
-  toplamDeger     String
-  portfoyDegeri   String
-  sure            String?
-  createdAt       DateTime @default(now()) @map("created_at")
+  id             Int      @id @default(autoincrement())
+  sembol         String
+  son            String
+  farkYuzde      String
+  haftaBasiYuzde String
+  ayBasiYuzde    String
+  yilBasiYuzde   String
+  tedAdet        String
+  toplamDeger    String
+  sure           String?
+  createdAt      DateTime @default(now()) @map("created_at")
 }
