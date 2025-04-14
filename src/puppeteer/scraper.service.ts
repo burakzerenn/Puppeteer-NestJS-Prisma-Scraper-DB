@@ -8,7 +8,7 @@ import { StockDataExchanges, StockDataFunds } from 'src/types/stockData';
 export class ScraperService {
   constructor(private readonly prisma: PrismaService) { }
 
-  @Cron('0 19 * * *', { timeZone: 'Europe/Istanbul' })
+  @Cron('0 20 * * *')
   async scrapeForeksExchanges(): Promise<any> {
     console.log('Scraping foreks.com...');
 
@@ -164,7 +164,7 @@ export class ScraperService {
     }
   }
 
-  @Cron('0 22 * * *', { timeZone: 'Europe/Istanbul' })
+  @Cron('0 22 * * *')
   async scrapeForeksFunds(): Promise<any> {
     console.log('Scraping foreks.com...');
 
